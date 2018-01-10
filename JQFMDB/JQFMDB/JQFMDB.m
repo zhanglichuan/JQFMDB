@@ -137,11 +137,12 @@ static JQFMDB *jqdb = nil;
     int keyCount = 0;
     for (NSString *key in dic) {
         
-        keyCount++;
         if ((nameArr && [nameArr containsObject:key]) || [key isEqualToString:@"pkid"]) {
             continue;
+        } else {
+            keyCount++;
         }
-        if (keyCount == dic.count) {
+        if (keyCount == (dic.count - 1)) {
             [fieldStr appendFormat:@" %@ %@)", key, dic[key]];
             break;
         }
